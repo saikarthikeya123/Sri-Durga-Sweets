@@ -1,19 +1,34 @@
+// Initialize EmailJS
+(function() {
+    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
+})();
+
 // Form validation and submission
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form values
+        // Set current IST time before submission
+        const istTime = new Date().toLocaleString('en-US', {
+            timeZone: 'Asia/Kolkata',
+            dateStyle: 'full',
+            timeStyle: 'long'
+        });
+        document.getElementById('submission_time').value = istTime;
+
+        // Basic form validation
         const name = this.querySelector('input[name="name"]').value;
         const email = this.querySelector('input[name="email"]').value;
         const phone = this.querySelector('input[name="phone"]').value;
-        const inquiryType = this.querySelector('select[name="inquiry_type"]').value;
         const message = this.querySelector('textarea[name="message"]').value;
+        const inquiryType = this.querySelector('select[name="inquiry_type"]').value;
         
-        // Validation
         let isValid = true;
         let errorMessage = '';
+        const errorDiv = document.getElementById('form-error');
+        
+        // Reset error message
+        errorDiv.style.display = 'none';
+        errorDiv.textContent = '';
         
         if (!name.trim()) {
             errorMessage += 'Please enter your name.\n';
@@ -29,7 +44,7 @@ if (contactForm) {
             errorMessage += 'Please enter a valid 10-digit phone number.\n';
             isValid = false;
         }
-        
+
         if (!inquiryType) {
             errorMessage += 'Please select an inquiry type.\n';
             isValid = false;
@@ -41,55 +56,63 @@ if (contactForm) {
         }
         
         if (!isValid) {
-            alert(errorMessage);
+            e.preventDefault();
+            errorDiv.textContent = errorMessage;
+            errorDiv.style.display = 'block';
             return;
         }
 
-        // If form is valid, prepare submission
+        // Disable submit button
         const submitBtn = this.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
+        submitBtn.innerHTML = '<span class="button-text">Sending...</span>';
 
-        // Set current timestamp
-        const now = new Date();
-        const submissionTime = now.toLocaleString('en-US', { 
-            timeZone: 'Asia/Kolkata',
-            dateStyle: 'full',
-            timeStyle: 'long'
-        });
-
-        // Prepare form data
-        const formData = new FormData();
-        formData.append('name', name);
-        formData.append('email', email);
-        formData.append('phone', phone);
-        formData.append('inquiry_type', inquiryType);
-        formData.append('message', message);
-        formData.append('submission_time', submissionTime);
-
-        // Send form data
-        fetch('https://formsubmit.co/durgasweets123@gmail.com', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (response.ok) {
-                window.location.href = 'thank-you.html';
-            } else {
-                throw new Error('Form submission failed');
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('Sorry, there was an error sending your message. Please try again later.');
-        })
-        .finally(() => {
-            submitBtn.disabled = false;
-            submitBtn.innerHTML = originalText;
-        });
+        // Form will be submitted normally to FormSubmit
+        // The page will be redirected to thank-you.html as specified in _next parameter
     });
 }
+
+// Initialize AOS
+AOS.init({
+    duration: 800,
+    easing: 'ease-in-out',
+    once: true,
+    mirror: false
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+            // Close mobile menu if open
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            if (navbarCollapse.classList.contains('show')) {
+                navbarCollapse.classList.remove('show');
+            }
+        }
+    });
+});
+
+// Navbar background change on scroll
+window.addEventListener('scroll', function() {
+    const navbar = document.querySelector('.navbar');
+    if (window.scrollY > 50) {
+        navbar.classList.add('navbar-scrolled');
+        navbar.style.backgroundColor = '#fff';
+        navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+    } else {
+        navbar.classList.remove('navbar-scrolled');
+        navbar.style.backgroundColor = '';
+        navbar.style.boxShadow = '';
+    }
+});
 
 // Phone number formatting
 const phoneInput = document.querySelector('input[name="phone"]');
