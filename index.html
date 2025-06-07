@@ -334,27 +334,23 @@
                         
                         <!-- FormSubmit Configuration -->
                         <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_next" value="https://sridurgasweetsbcm.vercel.app/thank-you.html">
                         <input type="hidden" name="_template" value="table">
                         <input type="hidden" name="_subject" value="New Customer Inquiry - Sri Durga Sweets">
-                        <input type="hidden" name="_next" value="https://sridurgasweetsbcm.vercel.app/thank-you.html">
-                        <input type="hidden" name="_autoresponse" value="Thank you for contacting Sri Durga Sweets & Home Foods!
+                        <input type="hidden" name="_replyto" value="%email%">
+                        <input type="hidden" name="_autoresponse_subject" value="Thank you for contacting Sri Durga Sweets">
+                        <input type="hidden" name="_autoresponse" value="Dear Valued Customer,
 
-Dear Valued Customer,
-
-We have received your message and appreciate you taking the time to reach out to us. This email confirms that your inquiry has been successfully submitted.
-
-Your message is important to us, and our team will review it promptly. We strive to respond to all inquiries within 24 hours during business days.
+Thank you for contacting Sri Durga Sweets & Home Foods. We have received your message and will get back to you soon.
 
 Business Hours:
 - Tuesday - Friday, Sunday: 8:00 AM - 9:30 PM
 - Monday, Saturday: 7:30 AM - 10:00 PM
 
-For immediate assistance, you can:
-- Call us: +91 98483 44355
+For immediate assistance:
+- Call: +91 98483 44355
 - WhatsApp: https://wa.me/919848344355
-- Visit us: Indira Market Road, Bhadrachalam, Telangana
-
-Thank you for choosing Sri Durga Sweets & Home Foods. We look forward to serving you!
+- Visit: Indira Market Road, Bhadrachalam, Telangana
 
 Best regards,
 Team Sri Durga Sweets">
@@ -380,11 +376,7 @@ Team Sri Durga Sweets">
                         <div class="mb-3">
                             <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
                         </div>
-                        <input type="hidden" name="submission_time" id="submission_time">
                         <div id="form-error" class="alert alert-danger" style="display: none;"></div>
-                        <div id="success-message" class="alert alert-success" style="display: none;">
-                            Thank you for your message! We will get back to you soon.
-                        </div>
                         <button type="submit" class="btn btn-primary" id="submit-button">
                             <span class="button-text">Send Message</span>
                         </button>
