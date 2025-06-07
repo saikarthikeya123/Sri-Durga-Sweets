@@ -102,6 +102,7 @@ if (phoneInput) {
 function validateForm() {
     const form = document.querySelector('.contact-form');
     const errorDiv = document.getElementById('form-error');
+    const submitButton = document.getElementById('submit-button');
     
     // Reset error message
     errorDiv.style.display = 'none';
@@ -131,7 +132,58 @@ function validateForm() {
         return false;
     }
 
-    return true;
+    // Disable submit button to prevent double submission
+    submitButton.disabled = true;
+    submitButton.innerHTML = '<span class="button-text">Sending...</span>';
+
+    // Log form submission
+    console.log('Form submission started');
+    
+    // Submit the form
+    try {
+        fetch(form.action, {
+            method: 'POST',
+            body: new FormData(form)
+        })
+        .then(response => {
+            console.log('Form submission response:', response);
+            if (response.ok) {
+                console.log('Form submitted successfully');
+                // Show success message
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }
+                // Reset form
+                form.reset();
+            } else {
+                console.error('Form submission failed');
+                errorDiv.textContent = 'There was an error submitting the form. Please try again.';
+                errorDiv.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Form submission error:', error);
+            errorDiv.textContent = 'There was an error submitting the form. Please try again.';
+            errorDiv.style.display = 'block';
+        })
+        .finally(() => {
+            // Re-enable submit button
+            submitButton.disabled = false;
+            submitButton.innerHTML = '<span class="button-text">Send Message</span>';
+        });
+    } catch (error) {
+        console.error('Form submission error:', error);
+        errorDiv.textContent = 'There was an error submitting the form. Please try again.';
+        errorDiv.style.display = 'block';
+        submitButton.disabled = false;
+        submitButton.innerHTML = '<span class="button-text">Send Message</span>';
+    }
+
+    return false; // Prevent default form submission
 }
 
 // Show success message after form submission
