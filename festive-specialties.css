@@ -1,0 +1,153 @@
+/* Festival Hero Section */
+.festival-hero {
+    background-color: #fff8f8;
+    padding: 5rem 0;
+    margin-bottom: 3rem;
+}
+
+.festival-hero h1 {
+    color: #333;
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.festival-hero .lead {
+    color: #666;
+    font-size: 1.25rem;
+}
+
+/* Festival Items */
+.festival-item {
+    padding: 4rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+.festival-item:last-child {
+    border-bottom: none;
+}
+
+.festival-content {
+    padding: 2rem;
+}
+
+.festival-icon {
+    font-size: 2.5rem;
+    color: #ff6b6b;
+    margin-bottom: 1.5rem;
+}
+
+.festival-content h2 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+}
+
+.festival-content .lead {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.features ul, .special-items ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+}
+
+.features ul li, .special-items ul li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.features ul li:before, .special-items ul li:before {
+    content: "•";
+    color: #ff6b6b;
+    position: absolute;
+    left: 0;
+}
+
+/* Highlight Festival Item */
+.festival-item.highlight {
+    background-color: #fff8f8;
+    border-radius: 15px;
+    margin: 2rem 0;
+    padding: 3rem;
+}
+
+/* Ladoo Sizes Grid */
+.ladoo-sizes {
+    margin: 2rem 0;
+}
+
+.ladoo-sizes h4 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.size-item {
+    background: #fff;
+    padding: 0.75rem;
+    text-align: center;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    font-weight: 500;
+}
+
+.size-item.special {
+    background: #ff6b6b;
+    color: #fff;
+    font-weight: bold;
+}
+
+/* Buttons */
+.btn-primary {
+    background-color: #ff6b6b;
+    border: none;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #ff5252;
+}
+
+/* Images */
+.img-fluid {
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .festival-hero {
+        padding: 3rem 0;
+    }
+
+    .festival-hero h1 {
+        font-size: 2.5rem;
+    }
+
+    .festival-item {
+        padding: 2rem 0;
+    }
+
+    .festival-content {
+        padding: 1rem;
+    }
+
+    .festival-content h2 {
+        font-size: 2rem;
+    }
+
+    .size-grid {
+        grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+    }
+} 

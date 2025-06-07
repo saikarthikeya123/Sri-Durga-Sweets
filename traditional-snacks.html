@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traditional Snacks - Sri Durga Sweets</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="traditional-snacks.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="icon" href="favicon.jpg">
+    <script src="https://kit.fontawesome.com/e69667bd95.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Navbar (same as index.html) -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a href="index.html" class="navbar-brand">
+                <img src="navbar.jpg" alt="Sri Durga Sweets" width="220">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">HOME</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#about" class="nav-link">ABOUT</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#special-sweets" class="nav-link">OUR SWEETS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#specialties" class="nav-link">SPECIALTIES</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="festive-specialties.html" class="nav-link">FESTIVALS</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html#contact" class="nav-link">CONTACT</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Traditional Snacks Section -->
+    <section class="traditional-snacks py-5">
+        <div class="container">
+            <h2 class="text-center mb-5" data-aos="fade-up">Traditional Snacks</h2>
+            <div class="row g-4">
+                <!-- Mixture -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="mixture.jpg" alt="Mixture" class="snack-img">
+                        <h3>Mixture</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Mixture', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Plain Boondi -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="plain-boondi.jpg" alt="Plain Boondi" class="snack-img">
+                        <h3>Plain Boondi</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Plain Boondi', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Chegodi -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="chegodi.jpg" alt="Chegodi" class="snack-img">
+                        <h3>Chegodi</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Chegodi', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Sana Karapusa -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="sana-karapusa.jpg" alt="Sana Karapusa" class="snack-img">
+                        <h3>Sana Karapusa</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Sana Karapusa', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Ribbon Pakkodi -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="ribbon-pakkodi.jpg" alt="Ribbon Pakkodi" class="snack-img">
+                        <h3>Ribbon Pakkodi</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Ribbon Pakkodi', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Murikilu -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="murikilu.jpg" alt="Murikilu" class="snack-img">
+                        <h3>Murikilu</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Murikilu', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Vam Pusa -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="vam-pusa.jpg" alt="Vam Pusa" class="snack-img">
+                        <h3>Vam Pusa</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Vam Pusa', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Nuvula Pusa -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="nuvula-pusa.jpg" alt="Nuvula Pusa" class="snack-img">
+                        <h3>Nuvula Pusa</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Nuvula Pusa', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Corn Flakes -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="corn-flakes.jpg" alt="Corn Flakes" class="snack-img">
+                        <h3>Corn Flakes</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Corn Flakes', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Atukulu -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="atukulu.jpg" alt="Atukulu" class="snack-img">
+                        <h3>Atukulu</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Atukulu', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Pallilu -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="pallilu.jpg" alt="Pallilu" class="snack-img">
+                        <h3>Pallilu</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Pallilu', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Palli Pakkodi -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="palli-pakkodi.jpg" alt="Palli Pakkodi" class="snack-img">
+                        <h3>Palli Pakkodi</h3>
+                        <p class="price">₹280/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Palli Pakkodi', '280')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Kaju Fry -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="kaju-fry.jpg" alt="Kaju Fry" class="snack-img">
+                        <h3>Kaju Fry</h3>
+                        <p class="price">₹1200/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Kaju Fry', '1200')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Vamu Biscuits -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="vamu-biscuits.jpg" alt="Vamu Biscuits" class="snack-img">
+                        <h3>Vamu Biscuits</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Vamu Biscuits', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Goduma Biscuits -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="goduma-biscuits.jpg" alt="Goduma Biscuits" class="snack-img">
+                        <h3>Goduma Biscuits</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Goduma Biscuits', '240')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Jantikalu -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="jantikalu.jpg" alt="Jantikalu" class="snack-img">
+                        <h3>Jantikalu</h3>
+                        <p class="price">₹280/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Jantikalu', '280')">Order Now</button>
+                    </div>
+                </div>
+
+                <!-- Beyiam Pindi Poosa -->
+                <div class="col-lg-3 col-md-4 col-sm-6" data-aos="fade-up">
+                    <div class="snack-card">
+                        <img src="beyiam-pindi-poosa.jpg" alt="Beyiam Pindi Poosa" class="snack-img">
+                        <h3>Beyiam Pindi Poosa</h3>
+                        <p class="price">₹240/kg</p>
+                        <button class="btn btn-primary" onclick="showOrderModal('Beyiam Pindi Poosa', '240')">Order Now</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bootstrap and other scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="traditional-snacks.js"></script>
+</body>
+</html> 
