@@ -346,7 +346,20 @@
                             <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="text" name="phone" class="form-control" placeholder="Enter 10 digit mobile number" minlength="10" maxlength="10" pattern="\d{10}" oninput="this.value = this.value.replace(/[^0-9]/g, '')" title="Please enter a valid 10-digit mobile number" required>
+                            <input 
+                                type="text" 
+                                name="phone" 
+                                class="form-control" 
+                                placeholder="Enter 10 digit mobile number" 
+                                minlength="10" 
+                                maxlength="10" 
+                                pattern="\d{10}" 
+                                inputmode="numeric"
+                                autocomplete="off"
+                                oninput="this.value = this.value.replace(/\D/g, '')"
+                                onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+                                required
+                            >
                         </div>
                         <div class="mb-3">
                             <select name="inquiry_type" class="form-control" required>
