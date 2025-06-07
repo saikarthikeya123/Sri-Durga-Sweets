@@ -2,83 +2,92 @@
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Set the current timestamp before form submission
-        const now = new Date();
-        const submissionTimeInput = document.getElementById('submission_time');
-        submissionTimeInput.value = now.toLocaleString('en-US', { 
-            timeZone: 'Asia/Kolkata',
-            dateStyle: 'full',
-            timeStyle: 'long'
-        });
-
-        // Log form data to console for verification
-        const formData = new FormData(contactForm);
-        console.log('Form submission data:');
-        for (let pair of formData.entries()) {
-            console.log(pair[0] + ': ' + pair[1]);
-        }
-
-        // Basic form validation
+        e.preventDefault();
+        
+        // Get form values
         const name = this.querySelector('input[name="name"]').value;
         const email = this.querySelector('input[name="email"]').value;
         const phone = this.querySelector('input[name="phone"]').value;
+        const inquiryType = this.querySelector('select[name="inquiry_type"]').value;
         const message = this.querySelector('textarea[name="message"]').value;
         
+        // Validation
         let isValid = true;
         let errorMessage = '';
         
-        // Name validation
         if (!name.trim()) {
             errorMessage += 'Please enter your name.\n';
             isValid = false;
         }
         
-        // Email validation
         if (!email.trim() || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
             errorMessage += 'Please enter a valid email address.\n';
             isValid = false;
         }
         
-        // Phone validation (minimum 10 digits, allowing +, -, spaces, and parentheses)
-        if (!phone.trim() || !phone.match(/^[0-9+\-\s()]{10,}$/)) {
-            errorMessage += 'Please enter a valid phone number.\n';
+        if (!phone.trim() || !phone.match(/^[0-9]{10}$/)) {
+            errorMessage += 'Please enter a valid 10-digit phone number.\n';
             isValid = false;
         }
         
-        // Message validation
+        if (!inquiryType) {
+            errorMessage += 'Please select an inquiry type.\n';
+            isValid = false;
+        }
+        
         if (!message.trim()) {
             errorMessage += 'Please enter your message.\n';
             isValid = false;
         }
         
         if (!isValid) {
-            e.preventDefault();
             alert(errorMessage);
             return;
         }
 
-        // Show loading state
-        const submitButton = this.querySelector('button[type="submit"]');
-        const originalButtonText = submitButton.innerHTML;
-        submitButton.disabled = true;
-        submitButton.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Sending...';
+        // If form is valid, prepare submission
+        const submitBtn = this.querySelector('button[type="submit"]');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = 'Sending...';
 
-        // Show success message after successful submission
-        const successMessage = document.getElementById('success-message');
-        if (successMessage) {
-            // Add event listener for form submission completion
-            window.addEventListener('submit', function() {
-                submitButton.disabled = false;
-                submitButton.innerHTML = originalButtonText;
-                successMessage.style.display = 'block';
-                contactForm.reset();
-                
-                // Hide success message after 5 seconds
-                setTimeout(() => {
-                    successMessage.style.display = 'none';
-                }, 5000);
-            }, { once: true });
-        }
+        // Set current timestamp
+        const now = new Date();
+        const submissionTime = now.toLocaleString('en-US', { 
+            timeZone: 'Asia/Kolkata',
+            dateStyle: 'full',
+            timeStyle: 'long'
+        });
+
+        // Prepare form data
+        const formData = new FormData();
+        formData.append('name', name);
+        formData.append('email', email);
+        formData.append('phone', phone);
+        formData.append('inquiry_type', inquiryType);
+        formData.append('message', message);
+        formData.append('submission_time', submissionTime);
+
+        // Send form data
+        fetch('https://formsubmit.co/durgasweets123@gmail.com', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (response.ok) {
+                window.location.href = 'thank-you.html';
+            } else {
+                throw new Error('Form submission failed');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Sorry, there was an error sending your message. Please try again later.');
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        });
     });
 }
 
@@ -86,8 +95,7 @@ if (contactForm) {
 const phoneInput = document.querySelector('input[name="phone"]');
 if (phoneInput) {
     phoneInput.addEventListener('input', function(e) {
-        let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
-        e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
+        this.value = this.value.replace(/\D/g, '').slice(0, 10);
     });
 }
 
