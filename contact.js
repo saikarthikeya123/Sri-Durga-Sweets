@@ -2,13 +2,21 @@
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
-        // Set current IST time before submission
-        const istTime = new Date().toLocaleString('en-US', {
+        // Set the current timestamp before form submission
+        const now = new Date();
+        const submissionTimeInput = document.getElementById('submission_time');
+        submissionTimeInput.value = now.toLocaleString('en-US', { 
             timeZone: 'Asia/Kolkata',
             dateStyle: 'full',
             timeStyle: 'long'
         });
-        document.getElementById('submission_time').value = istTime;
+
+        // Log form data to console for verification
+        const formData = new FormData(contactForm);
+        console.log('Form submission data:');
+        for (let pair of formData.entries()) {
+            console.log(pair[0] + ': ' + pair[1]);
+        }
 
         // Basic form validation
         const name = this.querySelector('input[name="name"]').value;
@@ -81,4 +89,19 @@ if (phoneInput) {
         let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,3})(\d{0,4})/);
         e.target.value = !x[2] ? x[1] : '(' + x[1] + ') ' + x[2] + (x[3] ? '-' + x[3] : '');
     });
-} 
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Show success message if redirected back with success parameter
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.get('success') === 'true') {
+        const successMessage = document.getElementById('success-message');
+        if (successMessage) {
+            successMessage.style.display = 'block';
+            // Hide the message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.display = 'none';
+            }, 5000);
+        }
+    }
+}); 
