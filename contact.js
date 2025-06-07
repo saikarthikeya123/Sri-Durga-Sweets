@@ -99,14 +99,48 @@ if (phoneInput) {
     });
 }
 
+function validateForm() {
+    const form = document.querySelector('.contact-form');
+    const errorDiv = document.getElementById('form-error');
+    
+    // Reset error message
+    errorDiv.style.display = 'none';
+    errorDiv.textContent = '';
+
+    // Validate name
+    const name = form.querySelector('input[name="name"]').value;
+    if (name.length < 3) {
+        errorDiv.textContent = 'Name must be at least 3 characters long';
+        errorDiv.style.display = 'block';
+        return false;
+    }
+
+    // Validate phone
+    const phone = form.querySelector('input[name="phone"]').value;
+    if (!/^[0-9]{10}$/.test(phone)) {
+        errorDiv.textContent = 'Please enter a valid 10-digit phone number';
+        errorDiv.style.display = 'block';
+        return false;
+    }
+
+    // Validate message
+    const message = form.querySelector('textarea[name="message"]').value;
+    if (message.length < 10) {
+        errorDiv.textContent = 'Message must be at least 10 characters long';
+        errorDiv.style.display = 'block';
+        return false;
+    }
+
+    return true;
+}
+
+// Show success message after form submission
 document.addEventListener('DOMContentLoaded', function() {
-    // Show success message if redirected back with success parameter
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('success') === 'true') {
+    if (urlParams.get('submitted') === 'true') {
         const successMessage = document.getElementById('success-message');
         if (successMessage) {
             successMessage.style.display = 'block';
-            // Hide the message after 5 seconds
             setTimeout(() => {
                 successMessage.style.display = 'none';
             }, 5000);

@@ -329,13 +329,15 @@
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-left">
-                    <form class="contact-form h-100" action="https://formsubmit.co/durgasweets123@gmail.com" method="POST">
+                    <form class="contact-form h-100" action="https://formsubmit.co/durgasweets123@gmail.com" method="POST" onsubmit="return validateForm()">
                         <h4 class="mb-3">Send us a Message</h4>
                         <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_captcha" value="true">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New Customer Feedback - Sri Durga Sweets">
+                        <input type="hidden" name="_subject" value="New Customer Inquiry - Sri Durga Sweets">
                         <input type="hidden" name="_next" value="https://sridurgasweetsbcm.vercel.app/thank-you.html">
+                        <input type="hidden" name="_cc" value="birrukarthikeya06@gmail.com">
+                        <input type="hidden" name="_blacklist" value="spammy pattern,banned pattern">
                         <input type="hidden" name="_autoresponse" value="Thank you for contacting Sri Durga Sweets & Home Foods!
 
 Dear Valued Customer,
@@ -357,22 +359,15 @@ Thank you for choosing Sri Durga Sweets & Home Foods. We look forward to serving
 
 Best regards,
 Team Sri Durga Sweets">
-                        <input type="hidden" name="_format" value="plain">
                         
                         <div class="mb-3">
-                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required minlength="3">
                         </div>
                         <div class="mb-3">
                             <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input 
-                                type="text" 
-                                name="phone" 
-                                class="form-control" 
-                                placeholder="Enter 10 digit mobile number" 
-                                required
-                            >
+                            <input type="tel" name="phone" class="form-control" placeholder="Enter 10 digit mobile number" pattern="[0-9]{10}" required>
                         </div>
                         <div class="mb-3">
                             <select name="inquiry_type" class="form-control" required>
@@ -384,9 +379,9 @@ Team Sri Durga Sweets">
                             </select>
                         </div>
                         <div class="mb-3">
-                            <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                            <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required minlength="10"></textarea>
                         </div>
-                        <input type="hidden" name="submission_time" id="submission_time">
+                        <div id="form-error" class="alert alert-danger" style="display: none;"></div>
                         <button type="submit" class="btn btn-primary">
                             <span class="button-text">Send Message</span>
                         </button>
