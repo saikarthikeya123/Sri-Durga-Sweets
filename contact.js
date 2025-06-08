@@ -7,6 +7,8 @@
 const contactForm = document.querySelector('.contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+
         // Set current IST time before submission
         const istTime = new Date().toLocaleString('en-US', {
             timeZone: 'Asia/Kolkata',
@@ -56,7 +58,6 @@ if (contactForm) {
         }
         
         if (!isValid) {
-            e.preventDefault();
             errorDiv.textContent = errorMessage;
             errorDiv.style.display = 'block';
             return;
@@ -68,8 +69,60 @@ if (contactForm) {
         submitBtn.disabled = true;
         submitBtn.innerHTML = '<span class="button-text">Sending...</span>';
 
-        // Form will be submitted normally to FormSubmit
-        // The page will be redirected to thank-you.html as specified in _next parameter
+        // Create FormData object
+        const formData = new FormData(this);
+        
+        // Add auto-response configuration
+        formData.append('_autoresponse', `Dear ${name},
+
+Thank you for contacting Sri Durga Sweets. We have received your ${inquiryType} inquiry and will get back to you soon.
+
+Your message:
+${message}
+
+Best regards,
+Sri Durga Sweets Team`);
+
+        formData.append('_template', 'box');
+        formData.append('_subject', 'Thank you for contacting Sri Durga Sweets');
+
+        // Send form data to FormSubmit
+        fetch("https://formsubmit.co/ajax/durgasweets123@gmail.com", {
+            method: "POST",
+            headers: {
+                'Accept': 'application/json'
+            },
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success === "true") {
+                // Show success message
+                const successMessage = document.getElementById('success-message');
+                if (successMessage) {
+                    successMessage.style.display = 'block';
+                    successMessage.textContent = "Thank you for contacting Sri Durga Sweets. We have sent a confirmation email to your inbox.";
+                    setTimeout(() => {
+                        successMessage.style.display = 'none';
+                    }, 5000);
+                }
+                // Reset form
+                contactForm.reset();
+            } else {
+                errorDiv.textContent = "There was an error sending your message. Please try again.";
+                errorDiv.style.display = 'block';
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            errorDiv.textContent = "There was an error sending your message. Please try again.";
+            errorDiv.style.display = 'block';
+        })
+        .finally(() => {
+            // Re-enable submit button
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalText;
+        });
     });
 }
 

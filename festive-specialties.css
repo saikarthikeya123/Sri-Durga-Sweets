@@ -108,15 +108,18 @@
 
 /* Buttons */
 .btn-primary {
-    background-color: #ff6b6b;
+    background-color: #ff6b6b !important;
     border: none;
-    padding: 0.75rem 2rem;
+    padding: 10px 25px;
     border-radius: 25px;
-    transition: background-color 0.3s ease;
+    font-weight: 600;
+    transition: all 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #ff5252;
+    background-color: #ff5252 !important;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
 }
 
 /* Images */

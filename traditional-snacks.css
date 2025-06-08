@@ -1,3 +1,9 @@
+/* Reset margin and padding for body and html */
+body, html {
+    margin: 0;
+    padding: 0;
+}
+
 .traditional-snacks {
     padding: 50px 0;
     background-color: #f8f9fa;
@@ -127,4 +133,12 @@
     text-align: center;
     margin-bottom: 3rem;
     color: #333;
+}
+
+.snack-card .description {
+    color: #666;
+    font-size: 0.9rem;
+    margin: 10px 0;
+    min-height: 60px;
+    line-height: 1.4;
 } 
