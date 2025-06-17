@@ -335,7 +335,14 @@
                 <div class="col-md-6" data-aos="fade-left">
                     <div class="contact-form h-100">
                         <h4 class="mb-3">Send us a Message</h4>
-                        <form action="https://formsubmit.co/durgasweets123@gmail.com" method="POST">
+                        <form class="contact-form mb-4" action="https://formsubmit.co/durgasweets123@gmail.com" method="POST">
+                            <!-- FormSubmit Configuration -->
+                            <input type="hidden" name="_captcha" value="true">
+                            <input type="hidden" name="_template" value="table">
+                            <input type="hidden" name="_subject" value="New Customer Feedback from Sri Durga Sweets">
+                            <input type="hidden" name="_autoresponse" value="Thank you for contacting Sri Durga Sweets & Home Foods!\n\nWe have received your message and will get back to you soon.\n\nShop Details:\nSri Durga Sweets & Home Foods\nIndira Market Road, Bhadrachalam, Telangana\nPhone: +91 98483 44355\nEmail: durgasweets123@gmail.com\nInstagram: @_karthikeya_06\n\nWe appreciate your interest!\n\nBest regards,\nSri Durga Sweets Team">
+                            <input type="hidden" name="_honey" style="display:none">
+                            <input type="hidden" name="_next" value="thank-you.html">
                             <div class="mb-3">
                                 <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                             </div>
@@ -357,14 +364,7 @@
                             <div class="mb-3">
                                 <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
                             </div>
-                            <!-- Hidden fields for FormSubmit options -->
-                            <input type="hidden" name="_next" value="thank-you.html">
-                            <input type="hidden" name="_cc" value="%email%">
-                            <input type="hidden" name="_autoresponse" value="Thank you for contacting Sri Durga Sweets & Home Foods!\n\nWe have received your message and will get back to you soon.\n\nShop Details:\nSri Durga Sweets & Home Foods\nIndira Market Road, Bhadrachalam, Telangana\nPhone: +91 98483 44355\nEmail: durgasweets123@gmail.com\nInstagram: @_karthikeya_06\n\nWe appreciate your interest!\n\nBest regards,\nSri Durga Sweets Team">
-                            <input type="text" name="_honey" style="display:none">
-                            <button type="submit" class="btn btn-primary">
-                                <span class="button-text">Send Message</span>
-                            </button>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
                         </form>
                     </div>
                     <div id="success-message" style="display: none;" class="alert alert-success mt-3">
