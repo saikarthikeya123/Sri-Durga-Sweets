@@ -13,10 +13,55 @@ AOS.init({
 
 // Handle contact form submission
 document.querySelector('.contact-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
     // Set current IST time
     const now = new Date();
     const istTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
     document.getElementById('submission_time').value = istTime;
+
+    // Get form data
+    const formData = {
+        name: this.name.value,
+        email: this.email.value,
+        phone: this.phone.value,
+        inquiry_type: this.inquiry_type.value,
+        message: this.message.value,
+        submission_time: istTime
+    };
+
+    // Send form data to FormSubmit
+    fetch('https://formsubmit.co/durgasweets123@gmail.com', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+        },
+        body: JSON.stringify(formData)
+    })
+    .then(response => {
+        if (response.ok) {
+            // Show success message
+            document.getElementById('success-message').style.display = 'block';
+            document.getElementById('success-message').textContent = 'Thank you for your message. We will get back to you soon!';
+            // Reset form
+            this.reset();
+            // Hide success message after 5 seconds
+            setTimeout(function() {
+                document.getElementById('success-message').style.display = 'none';
+            }, 5000);
+        } else {
+            throw new Error('Form submission failed');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        document.getElementById('form-error').style.display = 'block';
+        document.getElementById('form-error').textContent = 'Sorry, there was an error sending your message. Please try again later.';
+        setTimeout(function() {
+            document.getElementById('form-error').style.display = 'none';
+        }, 5000);
+    });
 });
 
 // Phone number formatting
