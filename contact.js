@@ -1,8 +1,3 @@
-// Initialize EmailJS
-(function() {
-    emailjs.init("YOUR_USER_ID"); // Replace with your EmailJS user ID
-})();
-
 // Initialize AOS (Animate On Scroll)
 AOS.init({
     duration: 800,
@@ -12,12 +7,25 @@ AOS.init({
 });
 
 // Handle contact form submission
-document.querySelector('.contact-form').addEventListener('submit', function(event) {
-    // Set current IST time
-    const now = new Date();
-    const istTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
-    document.getElementById('submission_time').value = istTime;
-});
+const contactForm = document.querySelector('.contact-form');
+if (contactForm) {
+    contactForm.addEventListener('submit', function(event) {
+        // Set current IST time
+        const now = new Date();
+        const istTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
+        document.getElementById('submission_time').value = istTime;
+        // Show success message after short delay (simulate FormSubmit redirect)
+        setTimeout(function() {
+            const successMessage = document.getElementById('success-message');
+            if (successMessage) {
+                successMessage.style.display = 'block';
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }
+        }, 1000);
+    });
+}
 
 // Phone number formatting
 const phoneInput = document.querySelector('input[name="phone"]');
