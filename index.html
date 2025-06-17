@@ -333,49 +333,91 @@
                     </div>
                 </div>
                 <div class="col-md-6" data-aos="fade-left">
-                    <div class="contact-form h-100">
+                    <form class="contact-form h-100" action="https://formsubmit.co/durgasweets123@gmail.com" method="POST">
                         <h4 class="mb-3">Send us a Message</h4>
-                        <form class="contact-form mb-4" action="https://formsubmit.co/durgasweets123@gmail.com" method="POST">
-                            <!-- FormSubmit Configuration -->
-                            <input type="hidden" name="_captcha" value="true">
-                            <input type="hidden" name="_template" value="table">
-                            <input type="hidden" name="_subject" value="New Customer Feedback from Sri Durga Sweets">
-                            <input type="hidden" name="_autoresponse" value="Thank you for contacting Sri Durga Sweets & Home Foods!\n\nWe have received your message and will get back to you soon.\n\nShop Details:\nSri Durga Sweets & Home Foods\nIndira Market Road, Bhadrachalam, Telangana\nPhone: +91 98483 44355\nEmail: durgasweets123@gmail.com\nInstagram: @_karthikeya_06\n\nWe appreciate your interest!\n\nBest regards,\nSri Durga Sweets Team">
-                            <input type="hidden" name="_honey" style="display:none">
-                            <input type="hidden" name="_next" value="thank-you.html">
-                            <div class="mb-3">
-                                <input type="text" name="name" class="form-control" placeholder="Your Name" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="email" name="email" class="form-control" placeholder="Your Email" required>
-                            </div>
-                            <div class="mb-3">
-                                <input type="tel" name="phone" class="form-control" placeholder="Your Phone" required>
-                            </div>
-                            <div class="mb-3">
-                                <select name="inquiry_type" class="form-control" required>
-                                    <option value="">Select Inquiry Type</option>
-                                    <option value="order">Place an Order</option>
-                                    <option value="bulk">Bulk Order Inquiry</option>
-                                    <option value="feedback">Feedback</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-                            <div class="mb-3">
-                                <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
-                            </div>
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                        </form>
-                    </div>
-                    <div id="success-message" style="display: none;" class="alert alert-success mt-3">
-                        Thank you for your message! We will get back to you soon.
-                    </div>
+                        
+                        <!-- FormSubmit Configuration -->
+                        <input type="hidden" name="_captcha" value="true">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_subject" value="New Customer Feedback from Sri Durga Sweets">
+                        <input type="hidden" name="_autoresponse" value="Dear Valued Customer,
+
+Thank you for contacting Sri Durga Sweets. We have received your message and will get back to you soon.
+
+Business Hours:
+- Tuesday - Friday, Sunday: 8:00 AM - 9:30 PM
+- Monday, Saturday: 7:30 AM - 10:00 PM
+
+For immediate assistance:
+- Call: +91 98483 44355
+- WhatsApp: https://wa.me/919848344355
+- Visit: Indira Market Road, Bhadrachalam, Telangana
+
+Best regards,
+Team Sri Durga Sweets">
+                        <input type="hidden" name="_webhook" value="https://formsubmit.co/timezone?tz=Asia/Kolkata">
+                        
+                        <div class="mb-3">
+                            <input type="text" name="name" class="form-control" placeholder="Your Name" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" name="email" class="form-control" placeholder="Your Email" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone" required>
+                        </div>
+                        <div class="mb-3">
+                            <select name="inquiry_type" class="form-control" required>
+                                <option value="">Select Inquiry Type</option>
+                                <option value="order">Place an Order</option>
+                                <option value="bulk">Bulk Order Inquiry</option>
+                                <option value="feedback">Feedback</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+                        </div>
+                        <input type="hidden" name="submission_time" id="submission_time">
+                        <div id="form-error" class="alert alert-danger" style="display: none;"></div>
+                        <div id="success-message" class="alert alert-success" style="display: none;"></div>
+                        <button type="submit" class="btn btn-primary" id="submit-button">
+                            <span class="button-text">Send Message</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
-   
+    <!-- Order Modal -->
+    <div class="modal fade" id="orderModal" tabindex="-1" aria-labelledby="orderModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="orderModalLabel">Sri Durga Sweets</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <p>Thank you for your interest in <span id="itemName"></span>!</p>
+                    <p class="price">Price: ₹<span id="itemPrice"></span>/kg</p>
+                    <div class="contact-details">
+                        <p>Please call us or visit our shop to place your order:</p>
+                        <ul>
+                            <li>Call: +91 98483 44355</li>
+                            <li>Visit: Indira Market Road, Near Tata-Gudi Center, Bhadrachalam, Telangana</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <a href="https://wa.me/919848344355" target="_blank" class="btn btn-success">
+                        <i class="fab fa-whatsapp"></i> WhatsApp Us
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer class="footer">
