@@ -337,15 +337,12 @@
                         <h4 class="mb-3">Send us a Message</h4>
                         
                         <!-- FormSubmit Configuration -->
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="hidden" name="_next" value="https://sridurgasweetsbcm.vercel.app/thank-you.html">
+                        <input type="hidden" name="_captcha" value="true">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_subject" value="New Customer Inquiry - Sri Durga Sweets">
-                        <input type="hidden" name="_replyto" value="%email%">
-                        <input type="hidden" name="_autoresponse_subject" value="Thank you for contacting Sri Durga Sweets">
+                        <input type="hidden" name="_subject" value="New Customer Feedback from Sri Durga Sweets">
                         <input type="hidden" name="_autoresponse" value="Dear Valued Customer,
 
-Thank you for contacting Sri Durga Sweets & Home Foods. We have received your message and will get back to you soon.
+Thank you for contacting Sri Durga Sweets. We have received your message and will get back to you soon.
 
 Business Hours:
 - Tuesday - Friday, Sunday: 8:00 AM - 9:30 PM
@@ -358,9 +355,8 @@ For immediate assistance:
 
 Best regards,
 Team Sri Durga Sweets">
-                        <input type="hidden" name="_cc" value="durgasweets123@gmail.com">
-                        <input type="hidden" name="_bcc" value="durgasweets123@gmail.com">
-
+                        <input type="hidden" name="_webhook" value="https://formsubmit.co/timezone?tz=Asia/Kolkata">
+                        
                         <div class="mb-3">
                             <input type="text" name="name" class="form-control" placeholder="Your Name" required>
                         </div>
@@ -368,7 +364,7 @@ Team Sri Durga Sweets">
                             <input type="email" name="email" class="form-control" placeholder="Your Email" required>
                         </div>
                         <div class="mb-3">
-                            <input type="tel" name="phone" class="form-control" placeholder="Enter 10 digit mobile number" pattern="[0-9]{10}" required>
+                            <input type="tel" name="phone" class="form-control" placeholder="Your Phone" required>
                         </div>
                         <div class="mb-3">
                             <select name="inquiry_type" class="form-control" required>
@@ -382,7 +378,9 @@ Team Sri Durga Sweets">
                         <div class="mb-3">
                             <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
                         </div>
+                        <input type="hidden" name="submission_time" id="submission_time">
                         <div id="form-error" class="alert alert-danger" style="display: none;"></div>
+                        <div id="success-message" class="alert alert-success" style="display: none;"></div>
                         <button type="submit" class="btn btn-primary" id="submit-button">
                             <span class="button-text">Send Message</span>
                         </button>
