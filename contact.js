@@ -13,54 +13,13 @@ AOS.init({
 
 // Handle contact form submission
 document.querySelector('.contact-form').addEventListener('submit', function(event) {
-    event.preventDefault();
-    
     // Set current IST time
     const now = new Date();
     const istTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
     document.getElementById('submission_time').value = istTime;
-
-    // Get form data
-    const formData = {
-        name: this.name.value,
-        email: this.email.value,
-        phone: this.phone.value,
-        inquiry_type: this.inquiry_type.value,
-        message: this.message.value,
-        submission_time: istTime
-    };
-
-    // Send form data to FormSubmit
-    fetch('https://formsubmit.co/durgasweets123@gmail.com', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Accept': 'application/json'
-        },
-        body: JSON.stringify(formData)
-    })
-    .then(response => {
-        if (response.ok) {
-            // Show success message
-            const successMessage = document.getElementById('success-message');
-            successMessage.textContent = 'Thank you for your message. We will get back to you soon!';
-            successMessage.style.display = 'block';
-            // Reset form
-            this.reset();
-            // Hide success message after 5 seconds
-            setTimeout(function() {
-                successMessage.style.display = 'none';
-            }, 5000);
-        } else {
-            throw new Error('Form submission failed');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        const errorDiv = document.getElementById('form-error');
-        errorDiv.textContent = 'Sorry, there was an error sending your message. Please try again later.';
-        errorDiv.style.display = 'block';
-    });
+    
+    // Let the form submit normally - don't prevent default
+    return true;
 });
 
 // Phone number formatting
