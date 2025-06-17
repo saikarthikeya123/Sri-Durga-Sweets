@@ -17,9 +17,6 @@ document.querySelector('.contact-form').addEventListener('submit', function(even
     const now = new Date();
     const istTime = now.toLocaleString('en-US', { timeZone: 'Asia/Kolkata' });
     document.getElementById('submission_time').value = istTime;
-    
-    // Let the form submit normally - don't prevent default
-    return true;
 });
 
 // Phone number formatting
